@@ -27,7 +27,7 @@ try dvc pipline from：https://dvc.org/doc/start/data-pipelines
 * Step 2: features
 > dvc run -n featurize -p featurize.max_features,featurize.ngrams -d src/featurization.py -d data/prepared -o data/features python src/featurization.py data/prepared data/features
 
-* Step 3: train
+* Step 3: train  
 如果不想执行dvc 命令，这直接按照`yaml`语言，编辑`dvc.yaml`文件.
 编辑完后，执行以下命令运行：
 > dvc repro
@@ -40,27 +40,27 @@ try dvc pipline from：https://dvc.org/doc/start/data-pipelines
 执行就可以看到：
 > dvc dag
 
-+-------------------+
-| data\data.xml.dvc |
-+-------------------+
-          *
-          *
-          *
-     +---------+
-     | prepare |
-     +---------+
-          *
-          *
-          *
-    +-----------+
-    | featurize |
-    +-----------+
-          *
-          *
-          *
-      +-------+
-      | train |
-      +-------+
++-------------------+  
+| data\data.xml.dvc |  
++-------------------+  
+          *  
+          *  
+          *  
+     +---------+  
+     | prepare |  
+     +---------+  
+          *  
+          *  
+          *  
+    +-----------+  
+    | featurize |  
+    +-----------+  
+          *  
+          *  
+          *  
+      +-------+  
+      | train |  
+      +-------+  
 
 
 
