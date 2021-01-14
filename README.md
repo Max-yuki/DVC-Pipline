@@ -19,7 +19,7 @@ try dvc pipline from：https://dvc.org/doc/start/data-pipelines
 * Step 4:
 > 如果要更新数据至最新版本：dvc update data/data.xml.dvc
 
-## DVC Pipline
+## Data Pipline
 
 * Step 1: prepare
 > dvc run -n prepare -p prepare.seed,prepare.split -d src/prepare.py -d data/data.xml -o data/prepared python src/prepare.py data/data.xml
@@ -61,6 +61,15 @@ try dvc pipline from：https://dvc.org/doc/start/data-pipelines
       +-------+  
       | train |  
       +-------+  
+
+## Experiments
+使用DVC跟踪模型的评估。
+ * Step 1: evaluate
+ > dvc run -n evaluate -d src/evaluate.py -d model.pkl -d data/features -M scores.json --plots-no-cache prc.json python src/evaluate.py model.pkl data/features scores.json prc.json
+
+ 
+
+
 
 
 
