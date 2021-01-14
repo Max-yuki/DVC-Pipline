@@ -63,11 +63,21 @@ try dvc pipline from：https://dvc.org/doc/start/data-pipelines
       +-------+  
 
 ## Experiments
-使用DVC跟踪模型的评估。
- * Step 1: evaluate
+使用DVC跟踪模型实验和不同实验下的模型指标的评估。
+ * Step 1: evaluate  
  > dvc run -n evaluate -d src/evaluate.py -d model.pkl -d data/features -M scores.json --plots-no-cache prc.json python src/evaluate.py model.pkl data/features scores.json prc.json
 
- 
+
+ * Step 2: 进行实验  
+ > 调整下参数：featurize的max_features改为1500， ngrams改为2。然后执行dvc repro.
+
+ * Step 3：diff  
+首先使用命令查看调整前后参数的变化：
+> dvc params diff
+调整参数后，模型的评估指标，例如AUC、recall等都会变化。 而通过以下命令查看调整前后的比较：
+> dvc metrics diff  
+当然也可以可视化：
+> dvc plots diff -x recall -y precision
 
 
 
